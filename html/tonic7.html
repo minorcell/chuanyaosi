@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百合白鸭汤</title>
+    <link rel="stylesheet" href="../style/reset.css">
+    <link rel="stylesheet" href="../style/tonic.css">
+</head>
+
+<body>
+    <div class="box">
+        <div class="cloud_1"></div>
+        <div class="cloud_2"></div>
+        <a class="diet" href="../index.html">
+            <span>百合白鸭汤</span>
+            
+        </a>
+        <div class="catalogue">
+            <div class="prepare">
+                <div class="remind_1">原 料
+                    <br>
+                    准 备
+                </div>
+                <div class="list">
+                    <div class="preBd">食材：白鸭半只 百合20克</div>
+                    <div class="preBd">配料：北沙参 枸杞子 大枣</div>
+                    <div class="preBd">调料：姜 葱 黄酒 盐 胡椒粉</div>
+                </div>
+            </div>
+            <div class="function">
+                <div class="remind_2">功 效</div>
+                <div class="funcBd">百合性甘微寒，入肺经，具有清肺热、止咳平喘的功效；鸭肉能滋阴润燥。
+                    百合能够健脾胃，促进消化液分泌，增加食欲；鸭肉富含蛋白质和脂肪，可以提供能量并增强身体抵抗力。
+                </div>
+            </div>
+            <div class="practice">
+                <div class="remind_2">做 法</div>
+                <div class="pracBd">1、白鸭洗净、切块，沸水焯去血污。
+                    百合、北沙参、枸杞子、大枣洗净，装入纱布袋，扎紧袋口。<br>
+                    2、将鸭块与纱布袋以及适量的姜、葱、黄酒、清汤（或清水）放入炖锅内。
+                    大火烧开后，用小火炖1小时左右。<br>
+                    3、捞出纱布袋，依据个人口味，加精盐、胡椒粉调味即可。
+                    </div>
+            </div>
+        </div>
+        <div class="literature">
+            <div class="name">《 黄 帝 内 经 · 大 素 》</div>
+            <div class="content">
+                <div class="box_1">患 者 食 之 为 药 物</div>
+                <div class="box_2">空 腹 食 之 为 食 物</div>
+            </div>
+
+        </div>
+        <div class="video">
+            <a href="../html/07.html"></a>
+            <div class="content">百合白鸭汤</div>
+        </div>
+    </div>
+    <script src="../js/tonic.js"></script>
+    <script>
+        const a = document.getElementsByTagName('span')[0]
+        let flag = true
+        setInterval(() => {
+            if (flag) {
+                a.textContent = '百合白鸭汤'
+                if (a.classList.contains('aOut')) {
+                    a.classList.remove('aOut')
+                }
+                if (a.classList.contains('aIn')) {
+                    a.classList.remove('aIn')
+                }
+                a.classList.add('aIn')
+                flag = false
+                setTimeout(() => {
+                    a.classList.add('aOut')
+                }, 3500);
+            }
+            else {
+                a.textContent = '返回'
+                if (a.classList.contains('aOut')) {
+                    a.classList.remove('aOut')
+                }
+                if (a.classList.contains('aIn')) {
+                    a.classList.remove('aIn')
+                }
+                a.classList.add('aIn')
+                flag = true
+                setTimeout(() => {
+                    a.classList.add('aOut')
+                }, 3500);
+
+            }
+        }, 5000);
+    </script>
+</body>
+
+</html>

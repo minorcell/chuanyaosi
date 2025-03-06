@@ -1,0 +1,253 @@
+body {
+    overflow: hidden;
+    position: relative;
+    font-family: 'ZiHunZhenHun';
+    color: #4e2f16;
+}
+
+.box {
+    height: 100vh;
+    width: 100vw;
+
+    background-image: url("../images/details/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 15px;
+}
+
+.cloud_1 {
+    width: 20vw;
+    height: 13vh;
+    position: absolute;
+    top: 76vh;
+    left: 0vw;
+    background: url(../images/notic/cloud_1.png) no-repeat center center;
+    background-size: contain;
+}
+
+.cloud_2 {
+    width: 18vw;
+    height: 14vh;
+    position: absolute;
+    top: 47vh;
+    left: 73vw;
+    background: url(../images/notic/cloud_2.png) no-repeat center center;
+    background-size: contain;
+}
+
+/* 省份 */
+.diet {
+    position: absolute;
+    top: 4vh;
+    left: 1vw;
+    height: 7vh;
+    width: 16vw;
+    background: url(../images/details/province.png) no-repeat center center;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: all 0.4s;
+    cursor: pointer;
+    color: #4e2f16;
+    font-size: 3vh;
+    transition: all 0.4s;
+}
+
+.diet:hover {
+    scale: 1.1;
+}
+
+.catalogue {
+    width: 60vw;
+    height: 80vh;
+    position: absolute;
+    left: 12vw;
+    top: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 4vh;
+    line-height: 1.5;
+}
+
+.catalogue .prepare {
+    width: 60vw;
+    height: 28vh;
+}
+
+.catalogue .remind_1 {
+    width: 20vh;
+    height: 20vh;
+    float: left;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url(../images/notic/Rectangle_109@2x.png) no-repeat center center;
+    background-size: contain;
+
+}
+
+.catalogue .list {
+    width: 45vw;
+    height: 28vh;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.catalogue .list .preBd {
+    border: 3px solid rgb(189, 171, 154);
+    width: 45vw;
+    height: 8.5vh;
+    border-radius: 15px;
+    font-size: 3vh;
+    padding: 2vh;
+}
+
+
+
+.catalogue .function {
+    width: 60vw;
+    height: 18vh;
+}
+
+.catalogue .remind_2 {
+    width: 20vh;
+    height: 10vh;
+    border-radius: 15px;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url(../images/notic/Rectangle_113@2x.png) no-repeat center center;
+    background-size: contain;
+}
+
+.catalogue .funcBd {
+    border: 3px solid rgb(189, 171, 154);
+    border-radius: 15px;
+    width: 45vw;
+    height: 18vh;
+    float: right;
+    font-size: 3vh;
+    padding: 2vh;
+}
+
+
+.catalogue .practice {
+    width: 60vw;
+    height: 30vh;
+}
+
+.catalogue .pracBd {
+    border: 3px solid rgb(189, 171, 154);
+    border-radius: 15px;
+    width: 45vw;
+    height: 30vh;
+    float: right;
+    padding: 2vh;
+    font-size: 3vh;
+}
+
+.literature {
+    position: absolute;
+    width: 18vw;
+    height: 53vh;
+    left: 77vw;
+    top: 9vh;
+    writing-mode: vertical-rl;
+    font-size: 4vh;
+    color: rgb(170, 136, 111);
+
+}
+
+.literature .name {
+    width: 6.5vh;
+    height: 44vh;
+    margin-top: 12vh;
+    border-left: rgb(170, 136, 111) 2.5px solid;
+}
+
+.literature .content {
+    width: 12vw;
+    height: 36vh;
+    columns: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.literature .box_1 {
+    border-left: rgb(170, 136, 111) 2.5px solid;
+    padding-left: 1vh;
+}
+
+.literature .box_2 {
+    border-left: rgb(170, 136, 111) 2.5px solid;
+    padding-left: 1vh;
+}
+
+.video {
+    position: relative;
+    width: 25vh;
+    height: 28vh;
+    left: 80vw;
+    top: 68vh;
+    font-size: 3vh;
+    color: rgb(121, 100, 79);
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.video a {
+    width: 27vh;
+    height: 25vh;
+    cursor: pointer;
+    display: block;
+    background: url(../images/notic/Group_97@2x.png) no-repeat center center;
+    background-size: cover;
+}
+
+.video:hover {
+    scale: 1.1;
+}
+
+.aIn {
+    animation: aIn 1.5s;
+}
+
+.aOut {
+    animation: aOut 1.5s;
+}
+
+@keyframes aIn {
+    0% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes aOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+}

@@ -1,0 +1,1015 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    transition: all 0.5s;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vh !important;
+}
+
+.container::-webkit-scrollbar {
+    width: 0 !important
+}
+
+.container {
+    -ms-overflow-style: none;
+}
+
+.container {
+    overflow: -moz-scrollbars-none;
+}
+
+.cate_ul::-webkit-scrollbar {
+    width: 0 !important
+}
+
+.cate_ul {
+    -ms-overflow-style: none;
+}
+
+.cate_ul {
+    overflow: -moz-scrollbars-none;
+}
+
+.search_res::-webkit-scrollbar {
+    width: 0 !important
+}
+
+.search_res {
+    -ms-overflow-style: none;
+}
+
+.search_res {
+    overflow: -moz-scrollbars-none;
+}
+
+@font-face {
+    font-family: 'ZiHunZhenHun';
+    src: url('../font/ZiHunZhenHun.ttf') format('truetype');
+    ascent-override: 100%;
+    descent-override: 30%;
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: 'ZiHunFengHua';
+    src: url('../font/ZiHunFengHua.ttf') format('truetype');
+    ascent-override: 100%;
+    descent-override: 30%;
+    font-weight: 900;
+}
+
+/* container盒子，主体部分 */
+.container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+.main,
+.special,
+.cates_box,
+.herbfood,
+.end {
+    scroll-snap-align: start;
+}
+
+@keyframes domIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.header {
+    position: fixed;
+    height: 10vh;
+    width: 100vw;
+    padding: 2vh 0;
+    visibility: hidden;
+    will-change: auto;
+}
+
+.headerIn {
+    animation: domIn 1s ease-in-out;
+    z-index: 101;
+    visibility: visible;
+}
+
+.logo_glo {
+    left: 0;
+    top: 0;
+    width: 25vh;
+    height: 25vh;
+}
+
+.logo_glo img {
+    height: 100%;
+}
+
+.logo_glo img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#to_top {
+    position: fixed;
+    width: 3vw;
+    right: 3vw;
+    bottom: 6vh;
+    z-index: 100;
+    cursor: pointer;
+}
+
+#to_top img {
+    width: 100%;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.show {
+    display: block !important;
+    animation: show 2s ease-in-out;
+}
+
+.bar {
+    position: absolute;
+    right: 2vw;
+    top: 2vh;
+    width: 45vw;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#search {
+    position: relative;
+    width: 14vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#search_input {
+    width: 12vw;
+    height: 4vh;
+    color: rgb(124, 82, 44);
+    font-family: "ZiHunFengHua";
+    border: 3px solid rgb(124, 82, 44);
+    outline: none;
+    border-radius: 50px;
+    padding-left: 15px;
+    background-color: transparent;
+}
+
+#search_input:focus {
+    border: 4px solid rgb(124, 82, 44);
+    border-radius: 50px;
+}
+
+#search_input::placeholder {
+    color: rgb(124, 82, 44);
+    font-family: "ZiHunFengHua";
+    font-weight: 700;
+    opacity: 0.5;
+}
+
+#search img {
+    width: 1.5vw;
+    cursor: pointer;
+}
+
+
+.search_res {
+    position: absolute;
+    height: 15vh;
+    width: 12vw;
+    border: 3px solid rgb(124, 82, 44);
+    border-radius: 2vh;
+    top: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    opacity: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    background-size: cover;
+}
+
+#res li {
+    height: 4vh !important;
+    width: 10vw !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "ZiHunFengHua";
+    font-weight: 700;
+    font-size: 1vw;
+    margin-bottom: 0.5vh;
+    color: rgb(124, 82, 44);
+    padding: 0.5vh 0;
+    border-radius: 50px;
+    transition: all 0.5s;
+}
+
+#res li:first-child {
+    margin-top: 0.5vh;
+}
+
+#res li:hover {
+    cursor: pointer;
+}
+
+#barPage {
+    width: 6vw;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+#barPage a {
+    width: 5vw;
+    height: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "ZiHunFengHua";
+    font-weight: 700;
+    font-size: 1.2vw;
+    color: #847263;
+    will-change: border;
+    transition: all 0s;
+}
+
+#barPage a:hover {
+    background: linear-gradient(to left, #7c522c, #7c522c) left top no-repeat,
+        linear-gradient(to bottom, #7c522c, #7c522c) left top no-repeat,
+        linear-gradient(to left, #7c522c, #7c522c) right bottom no-repeat,
+        linear-gradient(to left, #7c522c, #7c522c) right bottom no-repeat;
+    background-size: 3px 20px, 25px 3px, 3px 20px, 25px 3px;
+}
+
+.barLI {
+    background: linear-gradient(to left, #7c522c, #7c522c) left top no-repeat,
+        linear-gradient(to bottom, #7c522c, #7c522c) left top no-repeat,
+        linear-gradient(to left, #7c522c, #7c522c) right bottom no-repeat,
+        linear-gradient(to left, #7c522c, #7c522c) right bottom no-repeat;
+    background-size: 3px 20px, 25px 3px, 3px 20px, 25px 3px;
+}
+
+.main {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background: url('../images/index/mask_glo1.png') no-repeat center center;
+    background-size: cover;
+}
+
+.main .cate {
+    position: absolute;
+    border: 3.5px solid rgb(71, 48, 26);
+    border-radius: 15px;
+    width: 7vw;
+    height: 5vh;
+    font-family: 'ZiHunFengHua';
+    font-weight: 700;
+    font-size: 1.4vw;
+    left: 3vw;
+    bottom: 5vh;
+    cursor: pointer;
+    appearance: none;
+    transition: all 0.3s;
+    background-color: transparent;
+    visibility: hidden;
+}
+
+.cateIn {
+    animation: domIn 1s ease-in-out;
+    z-index: 101 !important;
+    visibility: visible !important;
+}
+
+.main .cate:hover {
+    background-color: rgba(110, 85, 65, 0.7);
+}
+
+.svgMap {
+    position: absolute;
+    width: 100vw;
+    height: 90vh;
+    z-index: 100;
+    left: 0;
+    top: 5vh;
+    z-index: 100;
+    animation: header 3s ease-in-out;
+}
+
+.svgMap path {
+    cursor: pointer;
+}
+
+@keyframes cate_ul_in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.cate_ul_in {
+    animation: cate_ul_in 0.5s ease-in-out;
+}
+
+.cate_ul {
+    cursor: pointer;
+    position: absolute;
+    width: 5vw;
+    z-index: 200;
+    height: 50vh;
+    bottom: 10vh;
+    left: 4vw;
+    color: rgb(19, 17, 13);
+    border: 3.5px solid rgb(78, 47, 22);
+    border-radius: 15px;
+    border-bottom: none;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    overflow-y: auto;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5;
+}
+
+.cate_ul li {
+    font-family: 'ZiHunFengHua';
+    font-weight: 700;
+    height: 4vh;
+    font-size: 1vw;
+    color: rgb(19, 17, 13);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.6vh 0;
+    transition: all 0.6s;
+}
+
+.cate_ul li:hover {
+    color: white;
+    background-color: rgba(110, 85, 65, 0.7);
+}
+
+@keyframes index_yun_out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes indexYun {
+    0% {
+        opacity: 0.8;
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: translateY(-4vh) scale(1.1);
+    }
+
+    100% {
+        opacity: 0.8;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.index_yun {
+    position: absolute;
+    width: 15vw;
+    bottom: 50vh;
+    right: 10vw;
+    z-index: 100;
+    animation: indexYun 16s ease-in-out infinite;
+}
+
+.logo_point2 {
+    position: absolute;
+    width: 10vw;
+    right: 20vw;
+    bottom: 10vh;
+    z-index: 100;
+    animation: header 3s ease-in-out;
+}
+
+.scrolling {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background: url('../images/index/mask_glo1.png') no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+    animation: all 1s;
+}
+
+.scrolling_item {
+    position: absolute;
+    white-space: nowrap;
+    color: rgb(165, 115, 70);
+    font-family: 'ZiHunZhenHun';
+    text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes outLogo {
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.scrolling_logo {
+    font-family: "ZiHunZhenHun";
+    font-size: 8vw;
+    position: absolute;
+    width: 75vw;
+    height: 30vh;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(71, 43, 21);
+    text-shadow: 10px 10px 20px rgb(255, 255, 255);
+    z-index: 200;
+    animation: outLogo 4s ease-in-out;
+    cursor: pointer;
+    will-change: transfrom;
+    transition: transform 1s;
+}
+
+.scrolling_logo:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+@keyframes hideScrolling {
+    0% {
+        transform: scale(1);
+        filter: blur(0px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.5);
+        filter: blur(4px);
+        opacity: 0;
+    }
+}
+
+.hideScrolling {
+    animation: hideScrolling 1s ease-in-out;
+}
+
+@keyframes openMap {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#openMap {
+    position: absolute;
+    width: 15vw;
+    height: 7vh;
+    bottom: 2vh;
+    left: 50vw;
+    transform: translateX(-50%);
+    z-index: 200;
+    border: none;
+    color: rgb(0, 0, 0);
+    font-family: 'ZiHunZhenHun';
+    font-size: 2.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 1vh;
+    box-shadow: 0px 0px 2vh rgb(255, 255, 255);
+    cursor: pointer;
+    animation: openMap 3s ease-in-out infinite;
+}
+
+#attention {
+    display: block;
+    position: absolute;
+    width: 10vw;
+    height: 7vh;
+    bottom: 15vh;
+    right: 0vw;
+    border: 1px solid black;
+    transform: rotate(-90deg);
+    z-index: 100;
+    border: none;
+    color: rgba(105, 80, 65, 0.6);
+    font-family: 'ZiHunZhenHun';
+    font-size: 2.5vw;
+    visibility: hidden;
+}
+
+.attentionIn {
+    visibility: visible !important;
+    z-index: 101 !important;
+}
+
+.special,
+.cates_box,
+.herbfood,
+.end {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: url('../images/index/mask_glo1.png') no-repeat center center;
+    background-size: cover;
+}
+
+.special,
+.cates_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'ZiHunZhenHun';
+    padding: 10vh 0;
+}
+
+.special_content {
+    margin-top: 5vh;
+    width: 75vw;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes left_yun {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(-5vh);
+        opacity: 0.6;
+    }
+
+    100% {
+        left: -10vw;
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes right_yun {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(5vh);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.yun_left,
+.yun_right {
+    height: 50%;
+}
+
+.yun_left {
+    animation: left_yun 5s ease-in-out infinite;
+}
+
+.yun_right {
+    animation: right_yun 5s ease-in-out infinite;
+}
+
+.special_content_text {
+    font-weight: 900;
+    font-size: 8vh;
+    color: rgb(78, 47, 22);
+    font-family: 'ZiHunZhenHun';
+}
+
+.img_box {
+    margin-top: 1vh;
+    width: 70vw;
+    height: 60vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.img_box_item {
+    position: relative;
+    width: 30%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 2vw;
+    transition: all 0.5s;
+}
+
+.img_box_item:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    cursor: pointer;
+}
+
+.img_box_item img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.img_box_item img:hover {
+    transform: scale(1.1);
+}
+
+.img_box_item .content_text {
+    position: absolute;
+    bottom: -10vw;
+    width: 100%;
+    height: 14vw;
+    transition: all 0.5s;
+    background-color: rgba(110, 86, 65);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.content_text h1 {
+    font-size: 1.5vw;
+    color: rgb(255, 255, 255);
+    font-family: 'ZiHunFengHua';
+}
+
+#line {
+    display: block;
+    margin: -0.8vh 0;
+    width: 75%;
+    border: 1px solid rgba(221, 217, 214, 1);
+}
+
+.content_text p {
+    display: inline-block;
+    width: 75%;
+    height: 50%;
+    font-size: 0.9vw;
+    color: rgb(255, 255, 255);
+    font-family: 'ZiHunFengHua';
+}
+
+.line {
+    width: 75%;
+    border: 1px solid rgba(237, 233, 229, 1);
+}
+
+.content_text:hover {
+    background-color: rgba(110, 85, 65, 0.5) !important;
+    bottom: 0;
+}
+
+.cates_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'ZiHunZhenHun';
+    padding: 0 0 0 0;
+}
+
+.cate_content {
+    width: 75vw;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cate_img_box {
+    width: 100vw;
+    height: 60vh;
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.img_wrapper {
+    padding: 1vh 0;
+    box-sizing: border-box;
+    display: flex;
+    animation: picmove 40s linear infinite forwards;
+}
+
+@keyframes picmove {
+    from {
+        transform: translate(0);
+    }
+
+    to {
+        transform: translate(-90vw);
+    }
+}
+
+.img_wrapper:hover {
+    animation-play-state: paused;
+}
+
+.img_wrapper .img_Box {
+    height: 58vh;
+    margin-right: 1vh;
+    position: relative;
+}
+
+.img_Box img {
+    height: 100%;
+    display: inline-block;
+    object-fit: cover;
+}
+
+.name {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    writing-mode: vertical-lr;
+    font-size: 3.5vw;
+    font-family: 'ZiHunZhenHun';
+    display: flex;
+    color: rgb(111, 86, 64);
+    justify-content: center;
+    align-items: center;
+    transition: all 0.6s;
+    opacity: 0;
+}
+
+.font_damu {
+    position: absolute;
+    font-family: 'ZiHunZhenHun';
+    /* 字体竖着排列*/
+    writing-mode: vertical-lr;
+
+    color: rgba(110, 85, 65, 1);
+    animation: fontIn 10s linear;
+}
+
+@keyframes fontIn {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: translateY(-5vh) scale(1.5);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10vh) scale(2);
+    }
+}
+
+.end,
+.herbfood {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'ZiHunZhenHun';
+    padding: 0 0 0 0;
+}
+
+.end_content {
+    width: 75vw;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.end_cate {
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(205, 190, 172);
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 1vh 0;
+    box-sizing: border-box;
+}
+
+.end_big_box {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    white-space: nowrap;
+    padding: 1vh 0;
+    box-sizing: border-box;
+    animation: picmove 40s linear infinite forwards;
+}
+
+.end_big_box:hover {
+    animation-play-state: paused;
+}
+
+.end_img_box {
+    height: 100%;
+}
+
+.end_img_box img {
+    margin-right: 1vh;
+    height: 40vh;
+    display: inline-block;
+    position: relative;
+    object-fit: cover;
+    transition: all 0.5s;
+}
+
+.end_img_box img:hover {
+    border-radius: 1vw;
+    box-shadow: 5px 5px 10px #a29688,
+        -5px -5px 10px #f8e6d0;
+}
+
+.content_img {
+    width: 100%;
+    height: 7vh;
+    /* 内部文字居中 */
+    font-size: 1.2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'ZiHunFengHua';
+}
+
+.end_footer {
+    position: absolute;
+    width: 30vw;
+    height: 12vh;
+    bottom: 0vh;
+    right: 20vw;
+}
+
+.end_footer img {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    animation: footer_img 5s ease-in-out infinite;
+}
+
+@keyframes footer_img {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.end_footer h1 {
+    float: right;
+    font-size: 2.5vw;
+    color: rgb(109, 83, 62);
+    font-family: 'ZiHunZhenHun';
+}
+
+.foods_footer {
+    position: absolute;
+    width: 30vw;
+    height: 12vh;
+    bottom: 0vh;
+    right: 20vw;
+}
+
+.foods_footer img {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    animation: footer_img 5s ease-in-out infinite;
+}
+
+.foods_footer h1 {
+    position: absolute;
+    top: -2vh;
+    right: 5vw;
+    font-size: 3.5vw;
+    color: rgb(109, 83, 62);
+    font-family: 'ZiHunZhenHun';
+}
+
+.foods {
+    width: 90vw;
+    height: 55vh;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    align-items: center;
+}
+
+.foods ul {
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.foods ul li {
+    height: 100%;
+    width: 18%;
+    background: url('../images/index/herbfoodbg.webp') no-repeat center center;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    writing-mode: vertical-lr;
+    font-size: 2vw;
+    color: rgb(78, 47, 22);
+}
+
+.foods ul li:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.foods ul li a {
+    color: rgb(78, 47, 22);
+}

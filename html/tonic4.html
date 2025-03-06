@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三七蒸蛋</title>
+    <link rel="stylesheet" href="../style/reset.css">
+    <link rel="stylesheet" href="../style/tonic.css">
+</head>
+
+<body>
+    <div class="box">
+        <div class="cloud_1"></div>
+        <div class="cloud_2"></div>
+        <a class="diet" href="../index.html">
+            <span>三七蒸蛋</span>
+
+        </a>
+        <div class="catalogue">
+            <div class="prepare">
+                <div class="remind_1">原 料
+                    <br>
+                    准 备
+                </div>
+                <div class="list">
+                    <div class="preBd">食材：鸡蛋2颗 三七粉10克</div>
+                    <div class="preBd">配料：盐3克 生抽适量</div>
+                    <div class="preBd">调料：葱花</div>
+                </div>
+            </div>
+            <div class="function">
+                <div class="remind_2">功 效</div>
+                <div class="funcBd">具有活血化瘀的作用，能够促进血液循环，缓解因气血不畅引起的疼痛和肿胀。
+                    促进红细胞生长，增强机体免疫功能，从而达到补血养血的效果。
+                </div>
+            </div>
+            <div class="practice">
+                <div class="remind_2">做 法</div>
+                <div class="pracBd">1、将三七粉倒入鸡蛋碗中。<br>
+                    2、加入盐，搅拌均匀。加入适量清水（约鸡蛋液体积的1.5倍），再次搅拌均匀。<br>
+                    3、将搅拌好的鸡蛋液盖上保鲜膜，并扎上小孔以便蒸汽排出。将碗放入蒸锅中，大火蒸15分钟。<br>
+                    4、关火后，焖3分钟以确保蛋羹完全熟透。
+                </div>
+            </div>
+        </div>
+        <div class="literature">
+            <div class="name">《 黄 帝 内 经 · 大 素 》</div>
+            <div class="content">
+                <div class="box_1">患 者 食 之 为 药 物</div>
+                <div class="box_2">空 腹 食 之 为 食 物</div>
+            </div>
+
+        </div>
+        <div class="video">
+            <a href="../html/04.html"></a>
+            <div class="content">三七蒸蛋</div>
+        </div>
+    </div>
+    <script src="../js/tonic.js"></script>
+    <script>
+        const a = document.getElementsByTagName('span')[0]
+        let flag = true
+        setInterval(() => {
+            if (flag) {
+                a.textContent = '三七蒸蛋'
+                if (a.classList.contains('aOut')) {
+                    a.classList.remove('aOut')
+                }
+                if (a.classList.contains('aIn')) {
+                    a.classList.remove('aIn')
+                }
+                a.classList.add('aIn')
+                flag = false
+                setTimeout(() => {
+                    a.classList.add('aOut')
+                }, 3500);
+            }
+            else {
+                a.textContent = '返回'
+                if (a.classList.contains('aOut')) {
+                    a.classList.remove('aOut')
+                }
+                if (a.classList.contains('aIn')) {
+                    a.classList.remove('aIn')
+                }
+                a.classList.add('aIn')
+                flag = true
+                setTimeout(() => {
+                    a.classList.add('aOut')
+                }, 3500);
+
+            }
+        }, 5000);
+    </script>
+</body>
+
+</html>

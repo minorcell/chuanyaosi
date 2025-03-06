@@ -1,0 +1,114 @@
+@font-face {
+    font-family: 'ZiHunZhenHun';
+    src: url('../font/ZiHunZhenHun.ttf') format('truetype');
+    ascent-override: 100%;
+    descent-override: 30%;
+    font-weight: 900;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.5s;
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+}
+
+body {
+    width: 100vw;
+    min-height: 100vh;
+    background: url('../images/index/mask_glo1.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+.box {
+    width: 75vw;
+    height: 75vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 8px 8px 16px #cec7bc,
+        -8px -8px 16px #fffdf0;
+    border-radius: 5vh;
+    will-change: border-radius, box-shadow;
+}
+
+.box:hover {
+    border-radius: 1vh;
+    box-shadow: 28px 28px 53px #cac4b8,
+        -28px -28px 53px #fffaea;
+}
+
+.box video {
+    width: 100%;
+}
+
+.title {
+    width: 16vw;
+    height: 7vh;
+    position: absolute;
+    top: 4vh;
+    left: 1vw;
+    z-index: 1;
+    background: url('../images/herbFoods/name.png') no-repeat center center;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    will-change: transfrom;
+    overflow: hidden;
+}
+
+.title:hover {
+    transform: scale(1.05);
+}
+
+.title a {
+    font-size: 1.4vw;
+    font-weight: 700;
+    font-family: 'ZiHunZhenHun';
+    color: rgba(78, 52, 25, 1);
+    text-decoration: none;
+}
+
+.aIn {
+    animation: aIn 1.5s;
+}
+
+.aOut {
+    animation: aOut 1.5s;
+}
+
+@keyframes aIn {
+    0% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes aOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+}

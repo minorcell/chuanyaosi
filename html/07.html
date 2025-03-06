@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="药膳">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百合白鸭汤</title>
+    <link rel="stylesheet" href="../style/herbsFood.css">
+</head>
+
+<body>
+    <div class="box">
+        <video src="../images/herbFoods/07.mp4" loop></video>
+    </div>
+    <div class="title">
+        <a href="./tonic7.html">百合白鸭汤</a>
+    </div>
+    <script>
+        window.addEventListener('mousemove', () => {
+            document.querySelector('video').play()
+        })
+        const title = document.querySelector('.title')
+        const a = title.getElementsByTagName('a')[0]
+        let flag = true
+        setInterval(() => {
+            if (flag) {
+                a.textContent = '百合白鸭汤'
+                if (a.classList.contains('aOut')) {
+                    a.classList.remove('aOut')
+                }
+                if (a.classList.contains('aIn')) {
+                    a.classList.remove('aIn')
+                }
+                a.classList.add('aIn')
+                flag = false
+                setTimeout(() => {
+                    a.classList.add('aOut')
+                }, 3500);
+            }
+            else {
+                a.textContent = '返回'
+                if (a.classList.contains('aOut')) {
+                    a.classList.remove('aOut')
+                }
+                if (a.classList.contains('aIn')) {
+                    a.classList.remove('aIn')
+                }
+                a.classList.add('aIn')
+                flag = true
+                setTimeout(() => {
+                    a.classList.add('aOut')
+                }, 3500);
+
+            }
+        }, 5000);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>丹参红花乌鸡汤</title>
+    <link rel="stylesheet" href="../style/reset.css">
+    <link rel="stylesheet" href="../style/tonic.css">
+</head>
+
+<body>
+    <div class="box">
+        <div class="cloud_1"></div>
+        <div class="cloud_2"></div>
+        <a class="diet" href="../index.html">
+            <span>丹参红花乌鸡汤</span>
+            
+        </a>
+        <div class="catalogue">
+            <div class="prepare">
+                <div class="remind_1">原 料
+                    <br>
+                    准 备
+                </div>
+                <div class="list">
+                    <div class="preBd">食材：乌骨鸡一只</div>
+                    <div class="preBd">配料：丹参 红花 川贝母</div>
+                    <div class="preBd">调料：味精 盐 胡椒粉 料酒 姜 大葱</div>
+                </div>
+            </div>
+            <div class="function">
+                <div class="remind_2">功 效</div>
+                <div class="funcBd">具有滋阴补肾的功效，适合肾阴亏损、头晕耳鸣、腰膝酸软等症状的人群食用。
+                    对于身体虚弱、营养不良的人群也有一定的调理作用，可以增强身体免疫力，提高抵抗力。
+                </div>
+            </div>
+            <div class="practice">
+                <div class="remind_2">做 法</div>
+                <div class="pracBd">1、将乌鸡宰杀后，去毛，内脏及爪，清洗干净。
+                    丹参润透，切成薄片。
+                    川贝母去杂质，切成大颗粒。
+                    红花去杂质，洗净。<br>
+                    2、将乌鸡、川贝母、红花、丹参、姜、葱、料酒一同置于炖锅内，加入2800毫升清水。<br>
+                    3、将炖锅置武火上烧沸，再用文火炖煮35分钟。<br>
+                    4、加入盐、味精、胡椒粉搅匀即成。
+                    </div>
+            </div>
+        </div>
+        <div class="literature">
+            <div class="name">《 黄 帝 内 经 · 大 素 》</div>
+            <div class="content">
+                <div class="box_1">患 者 食 之 为 药 物</div>
+                <div class="box_2">空 腹 食 之 为 食 物</div>
+            </div>
+
+        </div>
+        <div class="video">
+            <a href="../html/05.html"></a>
+            <div class="content">丹参红花乌鸡汤</div>
+        </div>
+    </div>
+    <script src="../js/tonic.js"></script>
+    <script>
+        const a = document.getElementsByTagName('span')[0]
+        let flag = true
+        setInterval(() => {
+            if (flag) {
+                a.textContent = '丹参红花乌鸡汤'
+                if (a.classList.contains('aOut')) {
+                    a.classList.remove('aOut')
+                }
+                if (a.classList.contains('aIn')) {
+                    a.classList.remove('aIn')
+                }
+                a.classList.add('aIn')
+                flag = false
+                setTimeout(() => {
+                    a.classList.add('aOut')
+                }, 3500);
+            }
+            else {
+                a.textContent = '返回'
+                if (a.classList.contains('aOut')) {
+                    a.classList.remove('aOut')
+                }
+                if (a.classList.contains('aIn')) {
+                    a.classList.remove('aIn')
+                }
+                a.classList.add('aIn')
+                flag = true
+                setTimeout(() => {
+                    a.classList.add('aOut')
+                }, 3500);
+
+            }
+        }, 5000);
+    </script>
+</body>
+
+</html>

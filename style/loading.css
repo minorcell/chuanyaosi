@@ -1,0 +1,68 @@
+/* loading效果 */
+@font-face {
+    font-family: 'ZiHunZhenHun';
+    src: url('../font/ZiHunZhenHun.ttf') format('truetype');
+    font-weight: 900;
+    font-display: swap;
+}
+
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000 !important;
+    transition: 1s ease;
+    background: url("../images/loading/bg.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+.loading_in {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    transition: 1s ease;
+    transform: translateY(100vh);
+}
+
+img.big_logo {
+    position: absolute;
+    top: 50%;
+    transform: translate(10%, -60%);
+}
+
+img.one_text {
+    position: absolute;
+    bottom: 25%;
+    right: 38%;
+    transform: translate(50%, -50%);
+}
+
+@keyframes end_text {
+    0% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+img.end_text {
+    position: absolute;
+    bottom: 0;
+    right: 12%;
+    transform: translate(50%, -50%);
+    animation: end_text ease-in-out 3s infinite;
+}
+
+.loading_in {
+    transform: translateY(0);
+}
+
+.loading_out {
+    transform: translateY(-100vh);
+}

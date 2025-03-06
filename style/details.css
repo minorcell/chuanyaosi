@@ -1,0 +1,330 @@
+/* 大盒子 */
+body {
+    overflow: hidden;
+    position: relative;
+}
+
+.box {
+    /* background-color: red; */
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../images/details/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/* 省份 */
+.province {
+    position: absolute;
+    top: 4vh;
+    left: 1vw;
+    height: 6vh;
+    width: 14vw;
+    background-color: black;
+    background: url(../images/details/province.png) no-repeat center center;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: all 0.4s;
+    cursor: pointer;
+}
+
+.province h1 {
+    font-family: 'ZiHunZhenHun';
+    color: #4e2f16;
+    font-size: 3.5vh;
+
+
+}
+
+.province:hover {
+    transform: scale(1.2);
+}
+
+/* 云 */
+.cloud_picture {
+    /* background-color: yellow;    */
+    height: 19.63vh;
+    width: 17.87vw;
+    position: absolute;
+    top: 12.22vh;
+    left: 4vw;
+    background: url(../images/details/cloud.png) no-repeat center center;
+    background-size: contain;
+}
+
+/* 草药 */
+.herb {
+    height: 89vh;
+    width: 44vw;
+    position: absolute;
+    top: 11.11vh;
+    left: 18vw;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+
+/* 红章 */
+.red_badge {
+    height: 16vh;
+    width: 18vw;
+    position: absolute;
+    top: 61vh;
+    left: 52vw;
+    background: url(../images/details/red_badge.png) no-repeat center center;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.red_badge h1 {
+    font-family: 'ZiHunZhenHun';
+    color: rgb(236, 225, 209);
+    font-size: 4.5vh;
+    writing-mode: vertical-lr;
+}
+
+/* 波浪 */
+.wave {
+    height: 18.43vh;
+    width: 38.29vw;
+    position: absolute;
+    top: 82.87vh;
+    left: 49vw;
+    background: url(../images/details/wave.png) no-repeat center center;
+    background-size: contain;
+}
+
+/* 目录 */
+.catalogue {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    width: 40vw;
+    height: 73vh;
+    position: absolute;
+    top: 13.52vh;
+    left: 61vw;
+}
+
+.catalogue .all-div {
+    width: 24vw;
+    height: 13vh;
+    position: relative;
+    background: url(../images/details/menu_img.png) no-repeat center center;
+    background-size: 100% 100%;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+/* 功效 */
+.catalogue .all-div:hover {
+    transform: scale(1.2);
+}
+
+.catalogue .all-div h1 {
+    font-family: 'ZiHunZhenHun';
+    color: #4e2f16;
+    position: absolute;
+    font-size: 6vh;
+    top: 15%;
+    left: 40%;
+
+}
+
+.catalogue .active {
+    translate: -2.5vw;
+    transform: scale(1.2);
+}
+
+/* 点击目录后的黄色背景 */
+.yellow_bg {
+    position: relative;
+    top: 30vh;
+    left: 19vw;
+    width: 70vh;
+    height: 35vh;
+    background: url(../images/details/yellow_bg.png) no-repeat center center;
+    background-size: 100% 100%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    opacity: 0;
+    transition: all 0.3s;
+    visibility: hidden;
+    font-family: 'ZiHunFengHua';
+    color: white;
+    font-size: 2.4vh;
+    text-shadow: 1.5px 2px 2px #000000;
+
+}
+
+.yellow_bg .name {
+    width: 5vh;
+    height: 10vh;
+    text-align: center;
+    writing-mode: vertical-lr;
+    position: absolute;
+    left: 0px;
+    margin: 20px;
+}
+
+.yellow_bg .vertical {
+    border: 1px solid white;
+    width: 1px;
+    height: 25vh;
+    position: absolute;
+    left: 60px;
+    box-shadow: 1.5px 2px 1px #000000;
+}
+
+.yellow_bg .content {
+    width: 45vh;
+    height: 25vh;
+    position: absolute;
+    left: 16vh;
+    text-indent: 2em;
+    overflow-y: auto;
+}
+
+.manyWindows {
+    display: flex;
+    width: 70vh;
+    height: 45vh;
+    align-items: center;
+    position: absolute;
+    top: 30vh;
+    left: 19vw;
+    opacity: 0;
+    transition: all 0.3s;
+    visibility: hidden;
+    font-family: 'ZiHunFengHua';
+    color: white;
+    font-size: 2.4vh;
+    text-shadow: 1.5px 2px 2px #000000;
+}
+
+.manyWindows .panel:first-child {
+    margin-left: 0;
+}
+
+.manyWindows .panel {
+    width: 10vh;
+    height: 45vh;
+    margin: 0px 5px;
+    flex: 0.5;
+    background: url(../images/details/yellow_bg.png) no-repeat center center;
+    background-size: 100% 100%;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+}
+
+.manyWindows .panel h2 {
+    writing-mode: vertical-lr;
+}
+
+.manyWindows .panel.active h2 {
+    writing-mode: vertical-lr;
+    position: absolute;
+    left: 2vh;
+}
+
+.manyWindows .vertical {
+    border: 1px solid white;
+    width: 1px;
+    height: 25vh;
+    position: absolute;
+    left: 80px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    box-shadow: 1.5px 2px 1px #000000;
+}
+
+.manyWindows .panel .contentBox {
+    height: 35vh;
+    float: right;
+    margin-left: 6vw;
+    margin-right: 1vw;
+    text-indent: 2em;
+    overflow-y: auto;
+}
+
+.manyWindows .panel .contentBox::-webkit-scrollbar {
+    width: 0 !important
+}
+
+.manyWindows .active {
+    flex: 2;
+}
+
+.homeJump {
+    width: 10vw;
+    height: 45vh;
+    position: absolute;
+    top: 34vh;
+    left: 3vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.homeJump .frameDiv {
+    border: 4px solid #7e522c;
+    background-size: 100% 100%;
+    width: 7vw;
+    height: 6vh;
+    margin: 1vh 0px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: 'ZiHunFengHua';
+    color: black;
+    font-size: 2.4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aIn {
+    animation: aIn 1.5s;
+}
+
+.aOut {
+    animation: aOut 1.5s;
+}
+
+@keyframes aIn {
+    0% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes aOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+}

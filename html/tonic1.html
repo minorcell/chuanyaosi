@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄芝桂圆童子鸡</title>
+    <link rel="stylesheet" href="../style/reset.css">
+    <link rel="stylesheet" href="../style/tonic.css">
+</head>
+
+<body>
+    <div class="box">
+        <div class="cloud_1"></div>
+        <div class="cloud_2"></div>
+        <a class="diet" href="../index.html">
+            <span>黄芝桂圆童子鸡</span>
+        </a>
+        <div class="catalogue">
+            <div class="prepare">
+                <div class="remind_1">原 料
+                    <br>
+                    准 备
+                </div>
+                <div class="list">
+                    <div class="preBd">食材：童子鸡一只</div>
+                    <div class="preBd">配料：冬笋 参菇 黄芪 桂圆 生姜 枸杞</div>
+                    <div class="preBd">调料：料酒 酱油 白醋 香油 鸡精 盐</div>
+                </div>
+            </div>
+            <div class="function">
+                <div class="remind_2">功 效</div>
+                <div class="funcBd">适用于刚生产后毛虚、血虚、气衰的产妇。<br>
+                    对气虚、体弱的老人也有补益和防治心血管疾病的作用。</div>
+            </div>
+            <div class="practice">
+                <div class="remind_2">做 法</div>
+                <div class="pracBd">1、将鸡处理干净后,放沸水锅中煮至七成熟时捞出(鸡汤留
+                    用),剁成长方形块,姜切末。<br>
+                    2、炒锅烧热,放油30克,姜末下锅后,稍编,放入料酒、酱
+                    油,添入鸡汤(没过鸡块一指为宣)。鸡块、桂圆等下 
+                    锅,烧开,改用小火慢塌,待鸡块烧烂,放入味精,勾入少许
+                    水淀粉,把醋、香油、枸杞子加入锅中调匀即可。
+                    </div>
+            </div>
+        </div>
+        <div class="literature">
+            <div class="name">《 黄 帝 内 经 · 大 素 》</div>
+            <div class="content">
+                <div class="box_1">患 者 食 之 为 药 物</div>
+                <div class="box_2">空 腹 食 之 为 食 物</div>
+            </div>
+
+        </div>
+        <div class="video">
+            <a href="../html/01.html"></a>
+            <div class="content">黄芝桂圆童子鸡</div>
+        </div>
+        
+    </div>
+    <script src="../js/tonic.js"></script>
+    <script>
+        const a = document.getElementsByTagName('span')[0]
+        let flag = true
+        setInterval(() => {
+            if (flag) {
+                a.textContent = '黄芪桂圆童子鸡'
+                if (a.classList.contains('aOut')) {
+                    a.classList.remove('aOut')
+                }
+                if (a.classList.contains('aIn')) {
+                    a.classList.remove('aIn')
+                }
+                a.classList.add('aIn')
+                flag = false
+                setTimeout(() => {
+                    a.classList.add('aOut')
+                }, 3500);
+            }
+            else {
+                a.textContent = '返回'
+                if (a.classList.contains('aOut')) {
+                    a.classList.remove('aOut')
+                }
+                if (a.classList.contains('aIn')) {
+                    a.classList.remove('aIn')
+                }
+                a.classList.add('aIn')
+                flag = true
+                setTimeout(() => {
+                    a.classList.add('aOut')
+                }, 3500);
+
+            }
+        }, 5000);
+    </script>
+</body>
+
+</html>

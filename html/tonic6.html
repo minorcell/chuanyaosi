@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姜糖苏叶饮</title>
+    <link rel="stylesheet" href="../style/reset.css">
+    <link rel="stylesheet" href="../style/tonic.css">
+</head>
+
+<body>
+    <div class="box">
+        <div class="cloud_1"></div>
+        <div class="cloud_2"></div>
+        <a class="diet" href="../index.html">
+            <span>姜糖苏叶饮</span>
+        </a>
+        <div class="catalogue">
+            <div class="prepare">
+                <div class="remind_1">原 料
+                    <br>
+                    准 备
+                </div>
+                <div class="list">
+                    <div class="preBd">食材：苏叶5克</div>
+                    <div class="preBd">配料：生姜3克</div>
+                    <div class="preBd">调料：红糖15克</div>
+                </div>
+            </div>
+            <div class="function">
+                <div class="remind_2">功 效</div>
+                <div class="funcBd">缓解风寒感冒的症状，如发热、恶寒、头身痛等。
+                    对于同时患有恶心、呕吐、胃痛、腹胀等症状的胃肠型感冒，姜糖苏叶饮更为适宜。
+                </div>
+            </div>
+            <div class="practice">
+                <div class="remind_2">做 法</div>
+                <div class="pracBd">1、方法一（煮沸法）：将生姜、苏叶、葱白放入锅中，加入适量的水，煮沸后转小火煮5-10分钟。<br>
+                    方法二（冲泡法）：将生姜、苏叶、葱白切成细丝或碎末，放入瓷杯或碗中，加入红糖，用沸水冲泡，盖上盖子温浸10分钟。<br>
+                    2、根据个人口味，可以适量调整红糖的用量。
+                    </div>
+            </div>
+        </div>
+        <div class="literature">
+            <div class="name">《 黄 帝 内 经 · 大 素 》</div>
+            <div class="content">
+                <div class="box_1">患 者 食 之 为 药 物</div>
+                <div class="box_2">空 腹 食 之 为 食 物</div>
+            </div>
+
+        </div>
+        <div class="video">
+            <a href="../html/06.html"></a>
+            <div class="content">姜糖苏叶饮</div>
+        </div>
+    </div>
+    <script src="../js/tonic.js"></script>
+    <script>
+        const a = document.getElementsByTagName('span')[0]
+        let flag = true
+        setInterval(() => {
+            if (flag) {
+                a.textContent = '姜糖苏叶饮'
+                if (a.classList.contains('aOut')) {
+                    a.classList.remove('aOut')
+                }
+                if (a.classList.contains('aIn')) {
+                    a.classList.remove('aIn')
+                }
+                a.classList.add('aIn')
+                flag = false
+                setTimeout(() => {
+                    a.classList.add('aOut')
+                }, 3500);
+            }
+            else {
+                a.textContent = '返回'
+                if (a.classList.contains('aOut')) {
+                    a.classList.remove('aOut')
+                }
+                if (a.classList.contains('aIn')) {
+                    a.classList.remove('aIn')
+                }
+                a.classList.add('aIn')
+                flag = true
+                setTimeout(() => {
+                    a.classList.add('aOut')
+                }, 3500);
+
+            }
+        }, 5000);
+    </script>
+</body>
+
+</html>
