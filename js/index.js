@@ -21,31 +21,21 @@ const to_topShow = (scrollHeight, clientHeight, scrollTop) => {
 
 // svg处理函数
 const svgMapHandle = () => {
-    const paths = document.querySelectorAll('svg path')
+    const paths = document.querySelectorAll('.svgMap path')
     paths.forEach(function (path) {
         path.style.transition = 'all 0.5s'
-        let pathId = path.getAttribute('id')
+        const pathId = path.getAttribute('id')
+        const areaId = pathId.includes('_font') ? pathId.replace('_font', '') : pathId
         path.addEventListener('click', () => {
-            if (pathId.includes('_font')) pathId = pathId.replace('_font', '')
-            if (areas.includes(pathId)) {
-                localStorage.setItem('pathId', pathId)
+            if (areas.includes(areaId)) {
+                localStorage.setItem('pathId', areaId)
                 window.location.href = `./html/details.html`
             }
         })
         path.addEventListener('mouseenter', function () {
-            paths.forEach(function (item_path) {
-                item_path.style.fill = '#dec4ad'
-            })
-            let pathCat = `${pathId}_font`
-            path.style.fill = '#ffe7c0'
-            document.getElementById(pathCat).style.fill = 'rgb(78, 47, 22)'
+            highlightArea(areaId)
         })
-        path.addEventListener('mouseout', function () {
-            paths.forEach(function (path) {
-                if (pathId.includes('_font')) path.style.zIndex = '100'
-                path.style.fill = path.getAttribute('fill')
-            })
-        })
+        path.addEventListener('mouseout', resetActiveArea)
     })
 }
 
@@ -184,6 +174,65 @@ const areas = [
     "乐山",
     "宜宾"
 ]
+
+// SVG 缓存与高亮状态
+const mapElements = {
+    areas: new Map(),
+    labels: new Map(),
+    areaDefaultFill: new Map(),
+    labelDefaultFill: new Map(),
+    activeId: null
+}
+
+const addMapItem = (map, key, value) => {
+    if (!map.has(key)) map.set(key, [])
+    map.get(key).push(value)
+}
+
+const cacheMapElements = () => {
+    document.querySelectorAll('.svgMap path').forEach((path) => {
+        const isLabel = path.id.includes('_font')
+        const baseId = isLabel ? path.id.replace('_font', '') : path.id
+        addMapItem(isLabel ? mapElements.labels : mapElements.areas, baseId, path)
+        if (isLabel) {
+            mapElements.labelDefaultFill.set(path, path.getAttribute('fill'))
+        } else {
+            mapElements.areaDefaultFill.set(path, path.getAttribute('fill'))
+        }
+    })
+}
+
+const resetActiveArea = () => {
+    if (!mapElements.activeId) return
+    const areaPaths = mapElements.areas.get(mapElements.activeId) || []
+    const labelPaths = mapElements.labels.get(mapElements.activeId) || []
+
+    areaPaths.forEach((path) => {
+        path.style.fill = mapElements.areaDefaultFill.get(path)
+    })
+    labelPaths.forEach((label) => {
+        label.style.fill = mapElements.labelDefaultFill.get(label)
+    })
+    mapElements.activeId = null
+}
+
+const highlightArea = (areaId) => {
+    if (!areaId) return
+    if (mapElements.activeId === areaId) return
+    resetActiveArea()
+
+    const areaPaths = mapElements.areas.get(areaId)
+    if (!areaPaths || areaPaths.length === 0) return
+    const labelPaths = mapElements.labels.get(areaId) || []
+
+    mapElements.activeId = areaId
+    areaPaths.forEach((path) => {
+        path.style.fill = '#ffe7c0'
+    })
+    labelPaths.forEach((label) => {
+        label.style.fill = 'rgb(78, 47, 22)'
+    })
+}
 
 // 弹幕效果
 let currentNum = 1
@@ -368,26 +417,14 @@ const li_to = () => {
 
 // 对应地图变色
 const svgWithLiHandle = () => {
-    const paths = document.querySelectorAll('.svgMap path')
     const lis = document.querySelectorAll('.cate_ul li')
     lis.forEach((li) => {
         const to_city = li.textContent
         li.addEventListener('mouseenter', () => {
-            paths.forEach((path) => {
-                path.style.fill = '#dec4ad'
-            })
-            paths.forEach((path) => {
-                if (path.id == to_city) {
-                    path.style.fill = '#ffe7c0'
-                    const pathCat = `${path.id}_font`
-                    document.getElementById(pathCat).style.fill = 'rgb(78, 47, 22)'
-                }
-            })
+            highlightArea(to_city)
         })
         li.addEventListener('mouseout', () => {
-            paths.forEach((path) => {
-                path.style.fill = path.getAttribute('fill')
-            })
+            resetActiveArea()
         })
     })
 }
@@ -416,30 +453,6 @@ const handleScrollBackground = () => {
     })
 }
 
-// search
-const searchHerbs = () => {
-    const Input = document.getElementById('search_input')
-    const res = document.getElementById('res')
-    Input.addEventListener('focus', () => {
-        res.style.opacity = 1
-    })
-    Input.addEventListener('blur', () => {
-        res.style.opacity = 0
-    })
-    Input.addEventListener('input', () => {
-        const value = Input.value
-        res.innerHTML = ''
-        herbs.forEach((herb) => {
-            if (herb.includes(value)) {
-                const li = document.createElement('li')
-                li.textContent = herb
-                res.appendChild(li)
-                res_li_to()
-            }
-        })
-    })
-}
-
 // getCityByHerb
 const getCityByHerb = (herb) => {
     for (const city in herbsByRegion) {
@@ -450,16 +463,51 @@ const getCityByHerb = (herb) => {
     return null
 }
 
-// res_li跳转：
-const res_li_to = () => {
-    const res_lis = document.querySelectorAll('.search_res li')
-    res_lis.forEach((li) => {
-        const herb = li.textContent.trim()
-        li.addEventListener('click', () => {
-            const city = getCityByHerb(herb)
+// 渲染并跳转的搜索逻辑
+const renderSearchResults = (value) => {
+    const res = document.getElementById('res')
+    res.innerHTML = ''
+
+    if (!value) return
+
+    const fragment = document.createDocumentFragment()
+    herbs.forEach((herb) => {
+        if (herb.includes(value)) {
+            const li = document.createElement('li')
+            li.textContent = herb
+            fragment.appendChild(li)
+        }
+    })
+    res.appendChild(fragment)
+}
+
+const searchHerbs = () => {
+    const Input = document.getElementById('search_input')
+    const res = document.getElementById('res')
+    let inputTimer
+
+    Input.addEventListener('focus', () => {
+        res.style.opacity = 1
+    })
+    Input.addEventListener('blur', () => {
+        res.style.opacity = 0
+    })
+    Input.addEventListener('input', () => {
+        clearTimeout(inputTimer)
+        inputTimer = setTimeout(() => {
+            renderSearchResults(Input.value.trim())
+        }, 150)
+    })
+
+    res.addEventListener('click', (event) => {
+        const target = event.target.closest('li')
+        if (!target) return
+        const herb = target.textContent.trim()
+        const city = getCityByHerb(herb)
+        if (city) {
             localStorage.setItem('pathId', city)
             window.location.href = `./html/details.html`
-        })
+        }
     })
 }
 
@@ -472,6 +520,8 @@ function preventMouseWheel(event) {
 
 // Dom加载完成后执行的函数
 document.addEventListener('DOMContentLoaded', () => {
+    // 缓存SVG信息
+    cacheMapElements()
     // 滚动监听和事件
     listenScroll()
     // 监听鼠标滑动
@@ -501,7 +551,5 @@ document.addEventListener('DOMContentLoaded', () => {
     handleScrollBackground()
     // search
     searchHerbs()
-    // search结果跳转
-    res_li_to()
 })
 document.addEventListener('wheel', preventMouseWheel, { passive: false });
