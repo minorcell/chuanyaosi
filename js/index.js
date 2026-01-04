@@ -236,14 +236,20 @@ const highlightArea = (areaId) => {
 
 // 弹幕效果
 let currentNum = 1
+let danmuTimer = null
+const MAX_DANMU_COUNT = 12
+const DANMU_INTERVAL = 1200
 const createDanmu = () => {
+    const scrollingContainer = document.querySelector('.scrolling')
+    if (!scrollingContainer) return
+    if (scrollingContainer.childElementCount >= MAX_DANMU_COUNT) return
+
     const danmu = document.createElement('div')
     danmu.classList.add('scrolling_item')
     danmu.style.zIndex = 100
     danmu.textContent = herbs[Math.floor(Math.random() * herbs.length)]
     danmu.style.fontSize = `${Math.floor(Math.random() * 6 + 6)}vh`
     danmu.style.left = `${window.innerWidth}px`
-    const scrollingContainer = document.querySelector('.scrolling')
     let randomNum = Math.floor(Math.random() * 9) - 1
 
     if (randomNum === currentNum) randomNum = 1
@@ -256,9 +262,9 @@ const createDanmu = () => {
     scrollingContainer.appendChild(danmu)
     danmu.style.transition = `transform 15000ms linear`
     danmu.style.color = "rgb(95, 82, 66)"
-    setTimeout(() => {
+    requestAnimationFrame(() => {
         danmu.style.transform = `translateX(-${window.innerWidth + danmu.offsetWidth}px)`
-    }, 0)
+    })
     danmu.addEventListener('transitionend', function () {
         danmu.remove()
     })
@@ -290,13 +296,21 @@ const listenScroll = () => {
         let clientHeight = container.clientHeight
         let scrollTop = container.scrollTop
         to_topShow(scrollHeight, clientHeight, scrollTop)
-    })
+    }, { passive: true })
 }
 
 // 启动弹幕循环
-let createDame
 const startDanmuLoop = () => {
-    createDame = setInterval(createDanmu, 350)
+    if (danmuTimer) return
+    danmuTimer = setInterval(() => {
+        requestAnimationFrame(createDanmu)
+    }, DANMU_INTERVAL)
+}
+
+const stopDanmuLoop = () => {
+    if (!danmuTimer) return
+    clearInterval(danmuTimer)
+    danmuTimer = null
 }
 
 // 打开地图
@@ -318,7 +332,7 @@ const openMap = () => {
             cate.classList.add('cateIn')
             header.classList.add('headerIn')
             attention.classList.add('attentionIn')
-            clearInterval(createDame)
+            stopDanmuLoop()
             danmus.forEach((danmu) => {
                 danmu.remove()
             })
@@ -333,7 +347,7 @@ const openMap = () => {
             cate.classList.add('cateIn')
             header.classList.add('headerIn')
             attention.classList.add('attentionIn')
-            clearInterval(createDame)
+            stopDanmuLoop()
             danmus.forEach((danmu) => {
                 danmu.remove()
             })
@@ -437,20 +451,26 @@ const handleScrollBackground = () => {
     firstA.classList.add('barLI')
     firstA.style.color = "#7c522c"
 
+    let ticking = false
     container.addEventListener('scroll', () => {
-        let scrollTop = container.scrollTop
+        if (ticking) return
+        ticking = true
+        requestAnimationFrame(() => {
+            let scrollTop = container.scrollTop
 
-        for (let i = 1; i <= 5; i++) {
-            const a = lis[i].querySelector('a')
-            if (scrollTop == (i - 1) * window.innerHeight) {
-                a.classList.add('barLI')
-                a.style.color = "#7c522c"
-            } else {
-                a.classList.remove('barLI')
-                a.style.color = "#847263"
+            for (let i = 1; i <= 5; i++) {
+                const a = lis[i].querySelector('a')
+                if (Math.abs(scrollTop - (i - 1) * window.innerHeight) < 2) {
+                    a.classList.add('barLI')
+                    a.style.color = "#7c522c"
+                } else {
+                    a.classList.remove('barLI')
+                    a.style.color = "#847263"
+                }
             }
-        }
-    })
+            ticking = false
+        })
+    }, { passive: true })
 }
 
 // getCityByHerb
@@ -511,6 +531,17 @@ const searchHerbs = () => {
     })
 }
 
+// 图片懒加载
+const optimizeImages = () => {
+    const lazyCandidates = document.querySelectorAll('img')
+    lazyCandidates.forEach((img) => {
+        if (img.closest('.loading')) return
+        if (img.hasAttribute('loading')) return
+        img.setAttribute('loading', 'lazy')
+        img.setAttribute('decoding', 'async')
+    })
+}
+
 // 阻止鼠标滚动的函数
 function preventMouseWheel(event) {
     if (!isOpen) {
@@ -551,5 +582,7 @@ document.addEventListener('DOMContentLoaded', () => {
     handleScrollBackground()
     // search
     searchHerbs()
+    // image lazy loading
+    optimizeImages()
 })
 document.addEventListener('wheel', preventMouseWheel, { passive: false });
