@@ -19,11 +19,40 @@ const to_topShow = (scrollHeight, clientHeight, scrollTop) => {
     }
 }
 
+const loadSvgMap = async () => {
+    const mount = document.getElementById('mapMount')
+    if (!mount) return
+
+    try {
+        const response = await fetch('./images/index/sichuan-map.svg')
+        if (!response.ok) throw new Error(`Map request failed: ${response.status}`)
+        mount.innerHTML = await response.text()
+        mapElements.root = mount
+    } catch (error) {
+        console.warn('Using SVG object fallback.', error)
+        const fallback = mount.querySelector('.svgMapFallback')
+        if (!fallback) return
+
+        await new Promise((resolve) => {
+            if (fallback.contentDocument?.querySelector('.svgMap')) {
+                resolve()
+                return
+            }
+            fallback.addEventListener('load', resolve, { once: true })
+            setTimeout(resolve, 1000)
+        })
+        if (fallback.contentDocument?.querySelector('.svgMap')) {
+            mapElements.root = fallback.contentDocument
+        }
+    }
+}
+
 // svg处理函数
 const svgMapHandle = () => {
-    const paths = document.querySelectorAll('.svgMap path')
+    const paths = mapElements.root.querySelectorAll('.svgMap path')
     paths.forEach(function (path) {
         path.style.transition = 'all 0.5s'
+        path.style.cursor = 'pointer'
         const pathId = path.getAttribute('id')
         const areaId = pathId.includes('_font') ? pathId.replace('_font', '') : pathId
         path.addEventListener('click', () => {
@@ -177,6 +206,7 @@ const areas = [
 
 // SVG 缓存与高亮状态
 const mapElements = {
+    root: document,
     areas: new Map(),
     labels: new Map(),
     areaDefaultFill: new Map(),
@@ -190,7 +220,7 @@ const addMapItem = (map, key, value) => {
 }
 
 const cacheMapElements = () => {
-    document.querySelectorAll('.svgMap path').forEach((path) => {
+    mapElements.root.querySelectorAll('.svgMap path').forEach((path) => {
         const isLabel = path.id.includes('_font')
         const baseId = isLabel ? path.id.replace('_font', '') : path.id
         addMapItem(isLabel ? mapElements.labels : mapElements.areas, baseId, path)
@@ -550,7 +580,8 @@ function preventMouseWheel(event) {
 }
 
 // Dom加载完成后执行的函数
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadSvgMap()
     // 缓存SVG信息
     cacheMapElements()
     // 滚动监听和事件

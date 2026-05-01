@@ -51,7 +51,7 @@ body {
 
 @font-face {
     font-family: 'ZiHunZhenHun';
-    src: url('../font/ZiHunZhenHun.ttf') format('truetype');
+    src: url('../font/ZiHunZhenHun.woff2') format('woff2');
     ascent-override: 100%;
     descent-override: 30%;
     font-weight: 900;
@@ -60,7 +60,7 @@ body {
 
 @font-face {
     font-family: 'ZiHunFengHua';
-    src: url('../font/ZiHunFengHua.ttf') format('truetype');
+    src: url('../font/ZiHunFengHua.woff2') format('woff2');
     ascent-override: 100%;
     descent-override: 30%;
     font-weight: 900;
@@ -231,7 +231,7 @@ body {
     color: rgb(124, 82, 44);
     padding: 0.5vh 0;
     border-radius: 50px;
-    transition: all 0.5s;
+    transition: color 0.5s ease, background-color 0.5s ease;
 }
 
 #res li:first-child {
@@ -262,7 +262,7 @@ body {
     font-size: 1.2vw;
     color: #847263;
     will-change: border;
-    transition: all 0s;
+    transition: none;
 }
 
 #barPage a:hover {
@@ -286,7 +286,7 @@ body {
     width: 100vw;
     height: 100vh;
     z-index: 100;
-    background: url('../images/index/mask_glo1.png') no-repeat center center;
+    background: url('../images/index/mask_glo1.webp') no-repeat center center;
     background-size: cover;
 }
 
@@ -303,7 +303,7 @@ body {
     bottom: 5vh;
     cursor: pointer;
     appearance: none;
-    transition: all 0.3s;
+    transition: background-color 0.3s ease;
     background-color: transparent;
     visibility: hidden;
 }
@@ -318,14 +318,21 @@ body {
     background-color: rgba(110, 85, 65, 0.7);
 }
 
-.svgMap {
+.map_mount,
+.svgMap,
+.svgMapFallback {
     position: absolute;
     width: 100vw;
     height: 90vh;
-    z-index: 100;
     left: 0;
     top: 5vh;
     z-index: 100;
+}
+
+.svgMap,
+.svgMapFallback {
+    display: block;
+    border: 0;
     animation: header 3s ease-in-out;
 }
 
@@ -367,7 +374,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: all 0.5;
+    transition: opacity 0.5s ease;
 }
 
 .cate_ul li {
@@ -380,7 +387,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 0.6vh 0;
-    transition: all 0.6s;
+    transition: color 0.6s ease, background-color 0.6s ease;
 }
 
 .cate_ul li:hover {
@@ -440,7 +447,7 @@ body {
     width: 100vw;
     height: 100vh;
     z-index: 100;
-    background: url('../images/index/mask_glo1.png') no-repeat center center;
+    background: url('../images/index/mask_glo1.webp') no-repeat center center;
     background-size: cover;
     overflow: hidden;
     animation: all 1s;
@@ -486,7 +493,7 @@ body {
     z-index: 200;
     animation: outLogo 4s ease-in-out;
     cursor: pointer;
-    will-change: transfrom;
+    will-change: transform;
     transition: transform 1s;
 }
 
@@ -577,7 +584,7 @@ body {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background: url('../images/index/mask_glo1.png') no-repeat center center;
+    background: url('../images/index/mask_glo1.webp') no-repeat center center;
     background-size: cover;
 }
 
@@ -669,7 +676,7 @@ body {
     height: 100%;
     overflow: hidden;
     border-radius: 2vw;
-    transition: all 0.5s;
+    transition: box-shadow 0.5s ease;
 }
 
 .img_box_item:hover {
@@ -692,7 +699,7 @@ body {
     bottom: -10vw;
     width: 100%;
     height: 14vw;
-    transition: all 0.5s;
+    transition: bottom 0.5s ease;
     background-color: rgba(110, 86, 65);
     display: flex;
     flex-direction: column;
@@ -805,7 +812,7 @@ body {
     color: rgb(111, 86, 64);
     justify-content: center;
     align-items: center;
-    transition: all 0.6s;
+    transition: opacity 0.6s ease, background-color 0.6s ease;
     opacity: 0;
 }
 
@@ -892,7 +899,7 @@ body {
     display: inline-block;
     position: relative;
     object-fit: cover;
-    transition: all 0.5s;
+    transition: border-radius 0.5s ease;
 }
 
 .end_img_box img:hover {

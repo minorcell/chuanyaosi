@@ -4,7 +4,6 @@
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
-    transition: all 0.5s;
 }
 html,
 body {
@@ -13,15 +12,17 @@ body {
 }
 @font-face {
     font-family: 'ZiHunZhenHun';
-    src: url('../font/ZiHunZhenHun.ttf') format('truetype');
+    src: url('../font/ZiHunZhenHun.woff2') format('woff2');
     font-weight: 900;
+    font-display: swap;
     ascent-override:  100%;
     descent-override: 30%;
 }
 @font-face {
     font-family: 'ZiHunFengHua';
-    src: url('../font/ZiHunFengHua.ttf') format('truetype');
+    src: url('../font/ZiHunFengHua.woff2') format('woff2');
     font-weight: 900;
+    font-display: swap;
     ascent-override: 100%;
     descent-override: 30%;
 }

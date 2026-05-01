@@ -9,7 +9,7 @@ body {
     height: 100vh;
     width: 100vw;
 
-    background-image: url("../images/details/background.png");
+    background-image: url("../images/details/background.webp");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -22,7 +22,7 @@ body {
     position: absolute;
     top: 76vh;
     left: 0vw;
-    background: url(../images/notic/cloud_1.png) no-repeat center center;
+    background: url(../images/notic/cloud_1.webp) no-repeat center center;
     background-size: contain;
 }
 
@@ -32,7 +32,7 @@ body {
     position: absolute;
     top: 47vh;
     left: 73vw;
-    background: url(../images/notic/cloud_2.png) no-repeat center center;
+    background: url(../images/notic/cloud_2.webp) no-repeat center center;
     background-size: contain;
 }
 
@@ -43,16 +43,16 @@ body {
     left: 1vw;
     height: 7vh;
     width: 16vw;
-    background: url(../images/details/province.png) no-repeat center center;
+    background: url(../images/details/province.webp) no-repeat center center;
     background-size: contain;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: all 0.4s;
+    transition: transform 0.4s ease;
     cursor: pointer;
     color: #4e2f16;
     font-size: 3vh;
-    transition: all 0.4s;
+    transition: transform 0.4s ease;
 }
 
 .diet:hover {
@@ -85,7 +85,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url(../images/notic/Rectangle_109@2x.png) no-repeat center center;
+    background: url(../images/notic/Rectangle_109@2x.webp) no-repeat center center;
     background-size: contain;
 
 }
@@ -123,7 +123,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url(../images/notic/Rectangle_113@2x.png) no-repeat center center;
+    background: url(../images/notic/Rectangle_113@2x.webp) no-repeat center center;
     background-size: contain;
 }
 
@@ -199,7 +199,7 @@ body {
     top: 68vh;
     font-size: 3vh;
     color: rgb(121, 100, 79);
-    transition: all 0.3s;
+    transition: color 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -212,7 +212,7 @@ body {
     height: 25vh;
     cursor: pointer;
     display: block;
-    background: url(../images/notic/Group_97@2x.png) no-repeat center center;
+    background: url(../images/notic/Group_97@2x.webp) no-repeat center center;
     background-size: cover;
 }
 

@@ -1,16 +1,16 @@
 @font-face {
     font-family: 'ZiHunZhenHun';
-    src: url('../font/ZiHunZhenHun.ttf') format('truetype');
+    src: url('../font/ZiHunZhenHun.woff2') format('woff2');
     ascent-override: 100%;
     descent-override: 30%;
     font-weight: 900;
+    font-display: swap;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: all 0.5s;
 }
 
 body::-webkit-scrollbar {
@@ -20,7 +20,7 @@ body::-webkit-scrollbar {
 body {
     width: 100vw;
     min-height: 100vh;
-    background: url('../images/index/mask_glo1.png') no-repeat center center;
+    background: url('../images/index/mask_glo1.webp') no-repeat center center;
     background-size: cover;
     position: relative;
     display: flex;
@@ -39,7 +39,7 @@ body {
     box-shadow: 8px 8px 16px #cec7bc,
         -8px -8px 16px #fffdf0;
     border-radius: 5vh;
-    will-change: border-radius, box-shadow;
+    transition: border-radius 0.5s ease, box-shadow 0.5s ease;
 }
 
 .box:hover {
@@ -59,13 +59,14 @@ body {
     top: 4vh;
     left: 1vw;
     z-index: 1;
-    background: url('../images/herbFoods/name.png') no-repeat center center;
+    background: url('../images/herbFoods/name.webp') no-repeat center center;
     background-size: contain;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    will-change: transfrom;
+    transition: transform 0.5s ease;
+    will-change: transform;
     overflow: hidden;
 }
 

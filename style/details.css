@@ -8,7 +8,7 @@ body {
     /* background-color: red; */
     height: 100vh;
     width: 100vw;
-    background-image: url("../images/details/background.png");
+    background-image: url("../images/details/background.webp");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -22,12 +22,12 @@ body {
     height: 6vh;
     width: 14vw;
     background-color: black;
-    background: url(../images/details/province.png) no-repeat center center;
+    background: url(../images/details/province.webp) no-repeat center center;
     background-size: contain;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: all 0.4s;
+    transition: transform 0.4s ease;
     cursor: pointer;
 }
 
@@ -51,7 +51,7 @@ body {
     position: absolute;
     top: 12.22vh;
     left: 4vw;
-    background: url(../images/details/cloud.png) no-repeat center center;
+    background: url(../images/details/cloud.webp) no-repeat center center;
     background-size: contain;
 }
 
@@ -74,7 +74,7 @@ body {
     position: absolute;
     top: 61vh;
     left: 52vw;
-    background: url(../images/details/red_badge.png) no-repeat center center;
+    background: url(../images/details/red_badge.webp) no-repeat center center;
     background-size: contain;
     display: flex;
     align-items: center;
@@ -95,7 +95,7 @@ body {
     position: absolute;
     top: 82.87vh;
     left: 49vw;
-    background: url(../images/details/wave.png) no-repeat center center;
+    background: url(../images/details/wave.webp) no-repeat center center;
     background-size: contain;
 }
 
@@ -116,9 +116,9 @@ body {
     width: 24vw;
     height: 13vh;
     position: relative;
-    background: url(../images/details/menu_img.png) no-repeat center center;
+    background: url(../images/details/menu_img.webp) no-repeat center center;
     background-size: 100% 100%;
-    transition: all 0.5s;
+    transition: transform 0.5s ease;
     cursor: pointer;
 }
 
@@ -149,14 +149,14 @@ body {
     left: 19vw;
     width: 70vh;
     height: 35vh;
-    background: url(../images/details/yellow_bg.png) no-repeat center center;
+    background: url(../images/details/yellow_bg.webp) no-repeat center center;
     background-size: 100% 100%;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     opacity: 0;
-    transition: all 0.3s;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     visibility: hidden;
     font-family: 'ZiHunFengHua';
     color: white;
@@ -202,7 +202,7 @@ body {
     top: 30vh;
     left: 19vw;
     opacity: 0;
-    transition: all 0.3s;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     visibility: hidden;
     font-family: 'ZiHunFengHua';
     color: white;
@@ -219,7 +219,7 @@ body {
     height: 45vh;
     margin: 0px 5px;
     flex: 0.5;
-    background: url(../images/details/yellow_bg.png) no-repeat center center;
+    background: url(../images/details/yellow_bg.webp) no-repeat center center;
     background-size: 100% 100%;
     border-radius: 20px;
     cursor: pointer;
@@ -248,7 +248,7 @@ body {
     left: 80px;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     box-shadow: 1.5px 2px 1px #000000;
 }
 

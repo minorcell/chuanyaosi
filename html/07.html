@@ -12,15 +12,15 @@
 
 <body>
     <div class="box">
-        <video src="../images/herbFoods/07.mp4" loop></video>
+        <video preload="metadata" playsinline muted src="../images/herbFoods/07.mp4" loop></video>
     </div>
     <div class="title">
         <a href="./tonic7.html">百合白鸭汤</a>
     </div>
     <script>
-        window.addEventListener('mousemove', () => {
+        window.addEventListener('pointermove', () => {
             document.querySelector('video').play()
-        })
+        }, { once: true })
         const title = document.querySelector('.title')
         const a = title.getElementsByTagName('a')[0]
         let flag = true

@@ -1,7 +1,7 @@
 /* loading效果 */
 @font-face {
     font-family: 'ZiHunZhenHun';
-    src: url('../font/ZiHunZhenHun.ttf') format('truetype');
+    src: url('../font/ZiHunZhenHun.woff2') format('woff2');
     font-weight: 900;
     font-display: swap;
 }
@@ -14,7 +14,7 @@
     height: 100vh;
     z-index: 1000 !important;
     transition: 1s ease;
-    background: url("../images/loading/bg.jpg") no-repeat center center;
+    background: url("../images/loading/bg.webp") no-repeat center center;
     background-size: cover;
 }
 
